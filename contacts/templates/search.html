@@ -1,6 +1,10 @@
 {% extends "admin/login.html" %}
 {% load i18n static %}
 
+{% block nav-global %}
+<a href="{% url 'upload' %}">Upload Here</a>
+{% endblock %}
+
 {% block title %}Search Contacts{% endblock %}
 
 {% block branding %}
