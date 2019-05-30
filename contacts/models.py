@@ -2,10 +2,12 @@ from django.db import models
 
 
 class Contact(models.Model):
-    name = models.CharField(max_length=200, null=True)
+    """Model to store contact."""
+    name = models.CharField(max_length=200, null=False)
 
 
 class Friend(models.Model):
-    name = models.CharField(max_length=200, null=True)
+    """Model to store friends and their phone numbers."""
+    name = models.CharField(max_length=200, null=False)
     contact = models.ForeignKey(Contact, on_delete=models.CASCADE)
-    phone = models.CharField(max_length=200, null=True)
+    phone = models.CharField(max_length=200, null=False)
