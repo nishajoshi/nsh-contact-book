@@ -1,0 +1,52 @@
+{% extends "admin/login.html" %}
+{% load i18n static %}
+
+{% block title %}Search Contacts{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">Search Contacts</h1>
+{% endblock %}
+
+{% block content %}
+
+<div id="content-main">
+
+<form method="get" id="search-form">
+  <div class="form-row">
+    <label for="contact">Contact:</label>
+    <input type="text" name="contact" id="contact" required=True/>
+  </div>
+  <div class="form-row">
+    <label for="friend">Friend(Optional):</label>
+    <input type="text" name="friend" id="friend" />
+  </div>
+  <div class="submit-row">
+    <label>&nbsp;</label><input type="submit" value="{% trans 'Search' %}">
+  </div>
+</form>
+
+<br/>
+<hr/>
+
+{% if friends %}
+<br/>
+
+<table style="width:100%">
+  <caption>Results</caption>
+  <tr>
+    <th>Friend</th>
+    <th>Phone</th>
+  </tr>
+  {% for friend in friends %}
+  <tr>
+    <td>{{ friend.name }}</td>
+    <td>{{ friend.phone }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% elif request.GET.contact or request.GET.friend %}
+No results found
+{% endif %}
+
+</div>
+{% endblock %}
